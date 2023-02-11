@@ -7,9 +7,9 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 const main = async () => {
     const users = [
         { 
-        name: '', 
-        email: '',
-        password: '',
+        name: 'HB', 
+        email: 'hby0818@gmail.com',
+        password: '1234',
         } 
     ]
 

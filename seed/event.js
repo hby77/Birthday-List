@@ -7,14 +7,14 @@ db.on('error', console.error.bind(console, 'MongoDB connection error:'))
 const main = async () => {
     const events = [
         { 
-        location: '', 
-        time: '',
-        date: '',
-        bdayPerson: '',
-        comments: '',
-        joinedList: '',
-        giftList: '',
-        creatorId: '',
+        location: 'Shorty Howell Park', 
+        time: '2pm',
+        date: '10-23-1999',
+        bdayPerson: 'Tyler',
+        comments: 'Dont forget to bring food',
+        joinedList: ['bob', 'david', 'danny'],
+        giftList: ['pencil', 'paper', 'waterbottle'],
+        creatorId: 'HB',
         } 
     ]
 

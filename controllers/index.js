@@ -1,65 +1,101 @@
-const Plant = require('../models/plant');
+const Event = require('../models/event');
+const User = require('../models/user')
 
-const createPlant = async (req, res) => {
+const getAllUsers = async (req, res) => {
     try {
-        const plant = await new Plant(req.body)
-        await plant.save()
-        return res.status(201).json({
-            plant,
-        });
-    } catch (error) {
-        return res.status(500).json({ error: error.message })
-    }
-}
-
-const getAllPlants = async (req, res) => {
-    try {
-        const plants = await Plant.find()
-        return res.status(200).json({ plants })
+        const users = await User.find()
+        return res.status(200).json({ users })
     } catch (error) {
         return res.status(500).send(error.message);
     }
 }
 
-const getPlantById = async (req, res) => {
+const getAllEvents = async (req, res) => {
+    try {
+        const events = await Event.find()
+        return res.status(200).json({ events })
+    } catch (error) {
+        return res.status(500).send(error.message);
+    }
+}
+
+const getUserById = async (req, res) => {
     try {
         const { id } = req.params;
-        const plant = await Plant.findById(id)
-        if (plant) {
-            return res.status(200).json({ plant });
+        const user = await User.findById(id)
+        if (user) {
+            return res.status(200).json({ user });
         }
-        return res.status(404).send('Plant with the specified ID does not exists');
+        return res.status(404).send('User with the specified ID does not exists');
     } catch (error) {
         return res.status(500).send(error.message);
     }
 }
 
-const updatePlant = async (req, res) => {
-    try {
-        const plant = await Plant.findByIdAndUpdate(req.params.id, req.body, { new: true})
-        res.status(200).json(plant)
-    } catch (error) {
-        return res.status(500).send(error.message);
-    }
-}
-
-const deletePlant = async (req, res) => {
+const getEventsById = async (req, res) => {
     try {
         const { id } = req.params;
-        const deleted = await Plant.findByIdAndDelete(id)
-        if (deleted) {
-            return res.status(200).send("Plant deleted");
+        const event = await Event.findById(id)
+        if (event) {
+            return res.status(200).json({ event });
         }
-        throw new Error("Plant not found");
+        return res.status(404).send('Event with the specified ID does not exists');
     } catch (error) {
         return res.status(500).send(error.message);
     }
 }
+
+// const createUser = async (req, res) => {
+//     try {
+//         const plant = await new Plant(req.body)
+//         await plant.save()
+//         return res.status(201).json({
+//             plant,
+//         });
+//     } catch (error) {
+//         return res.status(500).json({ error: error.message })
+//     }
+// }
+
+
+// const getPlantById = async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         const plant = await Plant.findById(id)
+//         if (plant) {
+//             return res.status(200).json({ plant });
+//         }
+//         return res.status(404).send('Plant with the specified ID does not exists');
+//     } catch (error) {
+//         return res.status(500).send(error.message);
+//     }
+// }
+
+// const updatePlant = async (req, res) => {
+//     try {
+//         const plant = await Plant.findByIdAndUpdate(req.params.id, req.body, { new: true})
+//         res.status(200).json(plant)
+//     } catch (error) {
+//         return res.status(500).send(error.message);
+//     }
+// }
+
+// const deletePlant = async (req, res) => {
+//     try {
+//         const { id } = req.params;
+//         const deleted = await Plant.findByIdAndDelete(id)
+//         if (deleted) {
+//             return res.status(200).send("Plant deleted");
+//         }
+//         throw new Error("Plant not found");
+//     } catch (error) {
+//         return res.status(500).send(error.message);
+//     }
+// }
 
 module.exports = {
-    createPlant,
-    getAllPlants,
-    getPlantById,
-    updatePlant,
-    deletePlant
+    getAllUsers,
+    getAllEvents,
+    getUserById,
+    getEventsById
 }
