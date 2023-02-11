@@ -4,7 +4,9 @@
   "description": "*** ### ***Description*** #### The website is a birthday gift planer. It helps people plan ahead and figure out what to get the birthday person for their birthday. It will have a main screen that allows for Log In and Sign Up. After you log in, you will have options to create a birthday list for the person on a event page and so will everyone else that joins the event page.  *** ### ***Technologies Used*** * React * Css * Javascript * Node.Js * MongoDB * Express *** ### ***Getting Started*** #### Log in and be able to plan your birthday list. *** ### ***Screenshots*** #### Picture ![Image] #### Picture  ![Image] #### Picture  ![Image] #### Picture ![Image] *** ### ***Future Updatess*** #### update 1 #### update 2 #### update 3 *** ### ***Credits*** #### My classmates && Teachers && Ta's ***",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
