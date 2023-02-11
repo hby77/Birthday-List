@@ -6,8 +6,8 @@ mongoose
     .then(() => {
         console.log('Successfully connected to MongoDB.')
     })
-    .catch(e => {
-        console.error('Connection error', e.message)
+    .catch(error => {
+        console.error('Connection error', error.message)
     })
 mongoose.set('debug', true)
 const db = mongoose.connection
