@@ -8,13 +8,13 @@ const main = async () => {
     const users = [
         { 
         name: 'HB', 
-        email: 'hby0818@gmail.com',
         password: '1234',
+        email: 'hby0818@gmail.com'
         } 
     ]
 
     await User.insertMany(users)
-    console.log("Created some users!")
+    console.log("Created a user!")
 }
 const run = async () => {
     await main()
