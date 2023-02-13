@@ -1,55 +1,45 @@
-import { Link } from 'react-router-dom'
 import { useState } from 'react'
-import Signup from './Signup'
-// import axios from 'axios'
+
 
 
 const Home = () => {
 
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
-    const initialState = {
-        email: '',
-        password: ''
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(email)
     }
 
-    const [login, setlogin] = useState('')
-
-    const handleChange = (event) => {
-        setFormState({ ...formState, [event.target.id]: event.target.value })
-    }
-
-    const handleSubmit = (event) => {
-        event.preventDefault()
-        setFormState(initialState)
-    }
 
     return (
         <div className="homeContainer">
-            <form className="loginBox">
+            <form className="loginBox" onSubmit={handleSubmit}>
                 <h1>Log In</h1>
                 <label htmlFor="email">Email</label>
                 <br />
                 <input
+                    placeholder='youremail@gmail.com'
                     id="email"
                     type="email"
-                // onChange=
-                // value=
+                    value={email}
+                    onChange={(e)=> setEmail(e.target.value)}
                 />
                 <br />
                 <label htmlFor="password">Password</label>
                 <br />
                 <input
+                    placeholder='*******'
                     id="password"
                     type="password"
-                // onChange=
-                // value=
+                    value={password}
+                    onChange={(e)=> setPassword(e.target.value)}
                 />
                 <br />
                 <button type="submit">Log In</button>
                 <br />
-                <Link to={'/signup'}>
-                    <button>Register</button>
-                </Link>
+                <button>Signup</button>
             </form>
         </div>
     )
