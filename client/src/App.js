@@ -19,7 +19,7 @@ function App() {
         {
           currentState === 'login' ? <Login onFormSwitch={toggleState} /> : <Signup onFormSwitch={toggleState}/>
         }
-
+      
       </div>
     </div>
   );
