@@ -1,9 +1,28 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import Signup from './Signup'
 // import axios from 'axios'
 
 
 const Home = () => {
+
+
+    const initialState = {
+        email: '',
+        password: ''
+    }
+
+    const [login, setlogin] = useState('')
+
+    const handleChange = (event) => {
+        setFormState({ ...formState, [event.target.id]: event.target.value })
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault()
+        setFormState(initialState)
+    }
+
     return (
         <div className="homeContainer">
             <form className="loginBox">
