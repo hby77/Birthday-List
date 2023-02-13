@@ -1,20 +1,25 @@
 import { useState } from 'react'
+import axios from 'axios'
 
-export const Signup = () => {
+export const Signup = (props) => {
     const [email, setEmail] = useState('')
     const [name, setName] = useState('')
     const [password, setPassword] = useState('')
 
-
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(email)
+        await axios.post('http://localhost:3001', email)
+        setEmail('')
+        await axios.post('http://localhost:3001', name)
+        setName('')
+        await axios.post('http://localhost:3001', password)
+        setPassword('')
     }
 
     return (
         <div className="homeContainer">
         <form className="loginBox" onSubmit={handleSubmit}>
-            <h1>Log In</h1>
+            <h1>Sign Up</h1>
             <label htmlFor="email">Email</label>
             <br />
             <input
@@ -45,9 +50,9 @@ export const Signup = () => {
                 onChange={(e)=> setPassword(e.target.value)}
             />
             <br />
-            <button type="submit">Log In</button>
+            <button type="submit">Sign Up</button>
             <br />
-            <button>Signup</button>
+            <button onClick={() => props.onFormSwitch('login')}>Already have an account? Login Here.</button>
         </form>
     </div>
     )

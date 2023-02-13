@@ -1,15 +1,18 @@
 import { useState } from 'react'
+import axios from 'axios'
 
 
-
-const Home = () => {
+const Home = (props) => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        console.log(email)
+        await axios.post('http://localhost:3001', email)
+        setEmail('')
+        await axios.post('http://localhost:3001', password)
+        setPassword('')
     }
 
 
@@ -39,7 +42,7 @@ const Home = () => {
                 <br />
                 <button type="submit">Log In</button>
                 <br />
-                <button>Signup</button>
+                <button onClick={() => props.onFormSwitch('signup')}>Don't have an account? Signup Here.</button>
             </form>
         </div>
     )

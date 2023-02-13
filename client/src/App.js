@@ -7,13 +7,17 @@ import Signup from './pages/Signup'
 
 function App() {
   const [currentState, setCurrentState] = useState('login')
-  
+
+  const toggleState = (stateName) => {
+    setCurrentState(stateName)
+  }
+
   return (
     <div className='appContainer'>
       <Header />
       <div className='routeContainer'>
         {
-          currentState === 'login' ? <Login /> : <Signup/>
+          currentState === 'login' ? <Login onFormSwitch={toggleState} /> : <Signup onFormSwitch={toggleState}/>
         }
 
       </div>
