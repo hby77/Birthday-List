@@ -1,22 +1,30 @@
+
 .navBar {
-  background-color: blue
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  /* background-color: blue; */
 }
 
+.createproject{
+  margin-top: 5em;
+}
 .appContainer {
-  height: 95vh;
-  width: 100vw;
+  height: 100%;
+  width: 100%;
 }
 .routeContainer {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: black;
+  /* background-color: black; */
   height: 100%;
   width: 100%;
 }
 
 .homeContainer {
-  background-color: green;
+  /* background-color: green; */
   text-align: center;
   height: 50vh;
   width: 50vw;
