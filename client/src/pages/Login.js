@@ -3,17 +3,31 @@ import axios from 'axios'
 
 
 const Home = (props) => {
+    const initialState = {
+        email: '',
+        password: ''
+    }
 
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
+    const [formStates, setFormStates] = useState(initialState)
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        await axios.post('http://localhost:3001', email)
-        setEmail('')
-        await axios.post('http://localhost:3001', password)
-        setPassword('')
+        const res = await axios.get(`http://localhost:3001/api/use`, {
+            params: {
+                result: formStates
+            }
+        })
+        const currentUser = res.data
+        console.log(currentUser)
+            setFormStates(initialState)
+        if (currentUser) login(currentUser)
     }
+
+    const login = (currentUser) => {
+        console.log(currentUser)
+        sessionStorage.setItem("userId", currentUser._id)
+    }
+
 
 
     return (
@@ -26,8 +40,8 @@ const Home = (props) => {
                     placeholder='youremail@gmail.com'
                     id="email"
                     type="email"
-                    value={email}
-                    onChange={(e)=> setEmail(e.target.value)}
+                    value={formStates.email}
+                    onChange={(e) => setFormStates({ ...formStates, [e.target.id]: e.target.value })}
                 />
                 <br />
                 <label htmlFor="password">Password</label>
@@ -36,8 +50,8 @@ const Home = (props) => {
                     placeholder='*******'
                     id="password"
                     type="password"
-                    value={password}
-                    onChange={(e)=> setPassword(e.target.value)}
+                    value={formStates.password}
+                    onChange={(e) => setFormStates({ ...formStates, [e.target.id]: e.target.value })}
                 />
                 <br />
                 <button type="submit">Log In</button>
