@@ -24,6 +24,7 @@ const NewProject = () => {
     const [newProject, setNewProject] = useState(projectState)
     const [receivedData, setReceivedData] = useState([])
 
+
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (
@@ -42,7 +43,7 @@ const NewProject = () => {
             
         }
     }
-console.log(receivedData)
+
 
     return (
         <div>
