@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={currentState === 'login' ? <Login onFormSwitch={toggleState} /> : <Signup onFormSwitch={toggleState}/>} />
           <Route path="/main" element={<Main />} />
           <Route path="/project/:id" element={<Project />} />
-          <Route path="/newproject" element={<NewProject />} />
+          <Route path="/newproject/:id" element={<NewProject />} />
         </Routes>
       </div>
     </div>

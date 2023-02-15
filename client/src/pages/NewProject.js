@@ -1,9 +1,11 @@
 import Header from '../components/Header'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import axios from 'axios'
+import { useParams } from 'react-router-dom'
 
 
 const NewProject = () => {
+    const { id } = useParams()
     const dataState = {
         relationship: '',
         person: '',
@@ -40,13 +42,25 @@ const NewProject = () => {
             const res = await axios.post('http://localhost:3001/api/createData', newData)
             setNewData(dataState)
             setReceivedData([...receivedData, res.data.data])
-            
+
         }
     }
 
+    const getData = async () => {
+        try {
+            const res = await axios.get(`http://localhost:3001/api/getUser/${sessionStorage.getItem('userId')}`)
+            console.log(res)
+        } catch (e) {
+        console.log(e)
+    }
+}
 
-    return (
-        <div>
+useEffect(() => {
+    getData()
+}, [])
+
+return (
+    <div>
         <div>
             <h1>New Project</h1>
             <Header />
@@ -120,19 +134,19 @@ const NewProject = () => {
         {receivedData && <div>
             {receivedData.map((item) => (
                 <div className='rowdata'>
-                <p>{item.relationship}</p>
-                <p>{item.person}</p>
-                <p>{item.currentLocation}</p>
-                <p>{item.association}</p>
-                <p>{item.birthday}</p>
-                <p>{item.companyAndCareer}</p>
-                <p>{item.hobbiesAndExpertise}</p>
-                <p>{item.notes}</p>
+                    <p>{item.relationship}</p>
+                    <p>{item.person}</p>
+                    <p>{item.currentLocation}</p>
+                    <p>{item.association}</p>
+                    <p>{item.birthday}</p>
+                    <p>{item.companyAndCareer}</p>
+                    <p>{item.hobbiesAndExpertise}</p>
+                    <p>{item.notes}</p>
                 </div>
             ))}
         </div>}
-        </div>
-    )
+    </div>
+)
 }
 export default NewProject
 
