@@ -8,17 +8,16 @@ const Main = () => {
     const [projects, setProjects] = useState([])
 
     useEffect(() => {
-        const getAllProjects = async () => {
-            const res = await axios.get('http://localhost:3001/api/users/projects')
-            setProjects(res.data.projects)
+        const getUserProjects = async () => {
+            const res = await axios.get(`http://localhost:3001/api/getUser/${sessionStorage.getItem("userId")}`)
+            setProjects(res.data.user.projects)
             console.log(res.data)
         }
-        getAllProjects()
+        getUserProjects()
     }, [])
 
 
-
-    return (
+    return projects && (
         <div>
             <Header />
             <Link to='/newproject'>

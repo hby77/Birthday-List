@@ -1,8 +1,12 @@
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
 
 const Home = (props) => {
+    
+    const navigate = useNavigate();
+
     const initialState = {
         email: '',
         password: ''
@@ -12,7 +16,7 @@ const Home = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const res = await axios.get(`http://localhost:3001/api/use`, {
+        const res = await axios.get(`http://localhost:3001/api/certify`, {
             params: {
                 result: formStates
             }
@@ -26,6 +30,8 @@ const Home = (props) => {
     const login = (currentUser) => {
         console.log(currentUser)
         sessionStorage.setItem("userId", currentUser._id)
+        
+        navigate("/main")
     }
 
 
