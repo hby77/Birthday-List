@@ -65,18 +65,11 @@ const NewProject = () => {
         }
     }
 
-    // const getData = async () => {
-    //     try {
-    //         const res = await axios.get(`http://localhost:3001/api/getUser/${sessionStorage.getItem('userId')}`)
-    //         console.log(res)
-    //     } catch (e) {
-    //         console.log(e)
-    //     }
-    // }
-
     useEffect(() => {
         getProject()
     }, [])
+
+    console.log(project)
 
     return project && (
         <div>
@@ -150,9 +143,9 @@ const NewProject = () => {
                     <button type="submit">+ Add</button>
                 </form>
             </div>
-            {receivedData && <div>
-                {receivedData.map((item) => (
-                    <div className='rowdata'>
+            {project && <div>
+                {project.data.map((item) => (
+                    <div key={item._id} className='rowdata'>
                         <p>{item.relationship}</p>
                         <p>{item.person}</p>
                         <p>{item.currentLocation}</p>
@@ -161,7 +154,6 @@ const NewProject = () => {
                         <p>{item.companyAndCareer}</p>
                         <p>{item.hobbiesAndExpertise}</p>
                         <p>{item.notes}</p>
-                        <button>Update</button>
                     </div>
                 ))}
             </div>}

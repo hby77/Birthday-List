@@ -12,7 +12,6 @@ const Main = () => {
         try {
             const res = await axios.get(`http://localhost:3001/api/getUser/${sessionStorage.getItem("userId")}`)
             setProjects(res.data.user.projects)
-            console.log("USER", res.data.user)
         } catch (e) {
             console.log(e)
         }
