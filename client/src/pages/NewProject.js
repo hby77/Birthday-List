@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
 
+
 const NewProject = () => {
     const { id } = useParams()
     const dataState = {
@@ -25,8 +26,8 @@ const NewProject = () => {
     const [newData, setNewData] = useState(dataState)
     const [newProject, setNewProject] = useState(projectState)
     const [receivedData, setReceivedData] = useState([])
-
     const [project, setProject] = useState({})
+
 
 
 
@@ -34,6 +35,7 @@ const NewProject = () => {
         try {
             const res = await axios.get(`http://localhost:3001/api/getProject/${id}`)
             setProject(res.data.project)
+            console.log("Project", res.data.project)
         } catch (e) {
             console.log(e)
         }
@@ -51,21 +53,26 @@ const NewProject = () => {
             newData.hobbiesAndExpertise !== '' &&
             newData.notes !== ''
         ) {
-            const res = await axios.post('http://localhost:3001/api/createData', newData)
+            const postData = await axios.post('http://localhost:3001/api/createData', newData)
+            setReceivedData([...receivedData, postData.data.data])
+            const updateData = await axios.put(`http://localhost:3001/api/updateProjects/${id}`,
+                {
+                    data: [...receivedData, postData.data.data],
+                }
+            )
+            getProject()
             setNewData(dataState)
-            setReceivedData([...receivedData, res.data.data])
-
         }
     }
 
-    const getData = async () => {
-        try {
-            const res = await axios.get(`http://localhost:3001/api/getUser/${sessionStorage.getItem('userId')}`)
-            console.log(res)
-        } catch (e) {
-            console.log(e)
-        }
-    }
+    // const getData = async () => {
+    //     try {
+    //         const res = await axios.get(`http://localhost:3001/api/getUser/${sessionStorage.getItem('userId')}`)
+    //         console.log(res)
+    //     } catch (e) {
+    //         console.log(e)
+    //     }
+    // }
 
     useEffect(() => {
         getProject()
@@ -154,6 +161,7 @@ const NewProject = () => {
                         <p>{item.companyAndCareer}</p>
                         <p>{item.hobbiesAndExpertise}</p>
                         <p>{item.notes}</p>
+                        <button>Update</button>
                     </div>
                 ))}
             </div>}
