@@ -26,6 +26,18 @@ const NewProject = () => {
     const [newProject, setNewProject] = useState(projectState)
     const [receivedData, setReceivedData] = useState([])
 
+    const [project, setProject] = useState({})
+
+
+
+    const getProject = async () => {
+        try {
+            const res = await axios.get(`http://localhost:3001/api/getProject/${id}`)
+            setProject(res.data.project)
+        } catch (e) {
+            console.log(e)
+        }
+    }
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -51,102 +63,102 @@ const NewProject = () => {
             const res = await axios.get(`http://localhost:3001/api/getUser/${sessionStorage.getItem('userId')}`)
             console.log(res)
         } catch (e) {
-        console.log(e)
+            console.log(e)
+        }
     }
-}
 
-useEffect(() => {
-    getData()
-}, [])
+    useEffect(() => {
+        getProject()
+    }, [])
 
-return (
-    <div>
+    return project && (
         <div>
-            <h1>New Project</h1>
-            <Header />
-            <form onSubmit={handleSubmit}>
-                <input
-                    name='title'
-                    type='text'
-                    placeholder='project title'
-                    value={newProject.relationship}
-                    onChange={(e) => setNewProject({ ...newProject, [e.target.name]: e.target.value })}
-                />
-                <input
-                    name='relationship'
-                    type='text'
-                    placeholder='relationship'
-                    value={newData.relationship}
-                    onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
-                />
-                <input
-                    name='person'
-                    type='text'
-                    placeholder='person'
-                    value={newData.person}
-                    onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
-                />
-                <input
-                    name='currentLocation'
-                    type='text'
-                    placeholder='currentLocation'
-                    value={newData.currentLocation}
-                    onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
-                />
-                <input
-                    name='association'
-                    type='text'
-                    placeholder='association'
-                    value={newData.association}
-                    onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
-                />
-                <input
-                    name='birthday'
-                    type='text'
-                    placeholder='birthday'
-                    value={newData.birthday}
-                    onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
-                />
-                <input
-                    name='companyAndCareer'
-                    type='text'
-                    placeholder='companyAndCareer'
-                    value={newData.companyAndCareer}
-                    onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
-                />
-                <input
-                    name='hobbiesAndExpertise'
-                    type='text'
-                    placeholder='hobbiesAndExpertise'
-                    value={newData.hobbiesAndExpertise}
-                    onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
-                />
-                <input
-                    name='notes'
-                    type='text'
-                    placeholder='notes'
-                    value={newData.notes}
-                    onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
-                />
-                <button type="submit">+ Add</button>
-            </form>
+            <div>
+                <h1>{project.title}</h1>
+                <Header />
+                <form onSubmit={handleSubmit}>
+                    <input
+                        name='title'
+                        type='text'
+                        placeholder='project title'
+                        value={newProject.relationship}
+                        onChange={(e) => setNewProject({ ...newProject, [e.target.name]: e.target.value })}
+                    />
+                    <input
+                        name='relationship'
+                        type='text'
+                        placeholder='relationship'
+                        value={newData.relationship}
+                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                    />
+                    <input
+                        name='person'
+                        type='text'
+                        placeholder='person'
+                        value={newData.person}
+                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                    />
+                    <input
+                        name='currentLocation'
+                        type='text'
+                        placeholder='currentLocation'
+                        value={newData.currentLocation}
+                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                    />
+                    <input
+                        name='association'
+                        type='text'
+                        placeholder='association'
+                        value={newData.association}
+                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                    />
+                    <input
+                        name='birthday'
+                        type='text'
+                        placeholder='birthday'
+                        value={newData.birthday}
+                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                    />
+                    <input
+                        name='companyAndCareer'
+                        type='text'
+                        placeholder='companyAndCareer'
+                        value={newData.companyAndCareer}
+                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                    />
+                    <input
+                        name='hobbiesAndExpertise'
+                        type='text'
+                        placeholder='hobbiesAndExpertise'
+                        value={newData.hobbiesAndExpertise}
+                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                    />
+                    <input
+                        name='notes'
+                        type='text'
+                        placeholder='notes'
+                        value={newData.notes}
+                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                    />
+                    <button type="submit">+ Add</button>
+                </form>
+            </div>
+            {receivedData && <div>
+                {receivedData.map((item) => (
+                    <div className='rowdata'>
+                        <p>{item.relationship}</p>
+                        <p>{item.person}</p>
+                        <p>{item.currentLocation}</p>
+                        <p>{item.association}</p>
+                        <p>{item.birthday}</p>
+                        <p>{item.companyAndCareer}</p>
+                        <p>{item.hobbiesAndExpertise}</p>
+                        <p>{item.notes}</p>
+                    </div>
+                ))}
+            </div>}
         </div>
-        {receivedData && <div>
-            {receivedData.map((item) => (
-                <div className='rowdata'>
-                    <p>{item.relationship}</p>
-                    <p>{item.person}</p>
-                    <p>{item.currentLocation}</p>
-                    <p>{item.association}</p>
-                    <p>{item.birthday}</p>
-                    <p>{item.companyAndCareer}</p>
-                    <p>{item.hobbiesAndExpertise}</p>
-                    <p>{item.notes}</p>
-                </div>
-            ))}
-        </div>}
-    </div>
-)
+    )
 }
 export default NewProject
 
