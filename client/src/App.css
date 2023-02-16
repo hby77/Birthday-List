@@ -1,18 +1,22 @@
 
 body {
+  margin: 0;
+  
+}
+.loginbackground {
   background: url('../image/backgrounddd.jpeg') no-repeat center center fixed;
   background-size: cover;
-  margin: 0;
+  width: 100vw;
+  display: flex;
+  justify-content: flex-end;
 }
-
-
 
 .navBar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
-  /* background-color: blue; */
+  background-color: blue;
 }
 
 .createproject{
@@ -48,36 +52,67 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
   font-family: 'Poppins', sans-serif;
   background-color: rgba(239, 128, 104, 0.846);
-  height: 65vh;
-  width: 37vw;
+  height: 63vh;
+  width: 36vw;
   border-radius: 10% ;
-  box-shadow: 7px 7px 10px black;
-  text-shadow: 2px 2px 10px white;
+  box-shadow: 4px 4px 5px black;
+  text-shadow: 2px 1px 2.5px white;
 }
 
 .textboxlogin {
-  width: 20vw;
-  margin-left: 6.5vw;
+  width: 23vw;
   height: 45px;
-  width: 60%;
   border: none;
   outline: none;
   border-radius: 30px;
-  color: white;
-  padding: 0 0 0 20px;
+  color: black;
+  padding-left: 20px;
   background-color: rgba(255,255,255,0.1);
+  box-shadow: 2px 2px 4px black;
 }
 
-.loginbutton {
+.submitbutton {
+  font-size: 15px;
+  width: 10vw;
+  height: 45px;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  color: black;
+  background-color: rgba(255,255,255,0.7);
+  box-shadow: 2px 2px 4px black;
+  cursor: pointer;
+}
+
+.submitbutton:hover{
+  box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255,255,255,.8);
+}
+
+.loginname{
+  margin-bottom: 0;
+  font-size: 36px;
+}
+
+.loginlink {
   width: 20vw;
-  margin-left: 9vw;
+  margin-left: .5vw;
+  font-size: 12px;
+  color: black;
+  text-shadow: none;
+}
+
+.loginlink:hover{
+    color: whitesmoke;
 }
 
 .signtext {
-font-size: 15px;
+  font-size: 14px;
+  text-shadow: none;
 }
 
 .rowdata{
