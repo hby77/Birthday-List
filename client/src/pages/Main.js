@@ -5,8 +5,8 @@ import axios from 'axios'
 
 const Main = () => {
     const [projects, setProjects] = useState([])
-    const [receivedData, setReceivedData] = useState([])
     const navigate = useNavigate()
+
 
     const getUserProjects = async () => {
         try {
@@ -22,10 +22,9 @@ const Main = () => {
             const projectData = await axios.post('http://localhost:3001/api/createProject', {
                 title: 'Create a new project'
             })
-            setReceivedData([...receivedData, projectData.data.project])
             await axios.put(`http://localhost:3001/api/updateUsers/${sessionStorage.getItem("userId")}`,
                 {
-                    projects: [...receivedData, projectData.data.project],
+                    projects: [...projects, projectData.data.project],
                 }
             )
             getUserProjects()

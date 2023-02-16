@@ -22,24 +22,24 @@ const NewProject = () => {
         title: '',
         data: []
     }
+    const [receivedData, setReceivedData] = useState([])
+    const [data, setData] = useState([])
 
     const [newData, setNewData] = useState(dataState)
     const [newProject, setNewProject] = useState(projectState)
-    const [receivedData, setReceivedData] = useState([])
-    const [project, setProject] = useState({})
 
 
 
 
-    const getProject = async () => {
+    const getData = async () => {
         try {
             const res = await axios.get(`http://localhost:3001/api/getProject/${id}`)
-            setProject(res.data.project)
-            console.log("Project", res.data.project)
+            setData(res.data.project.data)
         } catch (e) {
             console.log(e)
         }
     }
+
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -53,28 +53,33 @@ const NewProject = () => {
             newData.hobbiesAndExpertise !== '' &&
             newData.notes !== ''
         ) {
-            const postData = await axios.post('http://localhost:3001/api/createData', newData)
-            setReceivedData([...receivedData, postData.data.data])
-            const updateData = await axios.put(`http://localhost:3001/api/updateProjects/${id}`,
-                {
-                    data: [...receivedData, postData.data.data],
-                }
-            )
-            getProject()
+            const postData = await axios.post("http://localhost:3001/api/createData", newData)
+            await axios.put(`http://localhost:3001/api/updateProjects/${id}`, {
+                data: [...data, postData.data.data],
+            })
+            getData()
             setNewData(dataState)
         }
     }
 
+
+const handleDelete = async(id) => {
+    await axios.delete(`http://localhost:3001/api/deleteDatas/${id}`)
+    getData()
+}
+
+
+
     useEffect(() => {
-        getProject()
-    }, [])
+        getData()
+    }, [receivedData])
 
-    console.log(project)
 
-    return project && (
+
+    return data && (
         <div>
             <div>
-                <h1>{project.title}</h1>
+                <h1>Ayooo</h1>
                 <Header />
                 <form onSubmit={handleSubmit}>
                     <input
@@ -143,8 +148,8 @@ const NewProject = () => {
                     <button type="submit">+ Add</button>
                 </form>
             </div>
-            {project && <div>
-                {project.data.map((item) => (
+            <div>
+                {data.map((item) => (
                     <div key={item._id} className='rowdata'>
                         <p>{item.relationship}</p>
                         <p>{item.person}</p>
@@ -154,9 +159,10 @@ const NewProject = () => {
                         <p>{item.companyAndCareer}</p>
                         <p>{item.hobbiesAndExpertise}</p>
                         <p>{item.notes}</p>
+                    <button onClick={() => handleDelete(item._id)}>Delete</button>
                     </div>
                 ))}
-            </div>}
+            </div>
         </div>
     )
 }
