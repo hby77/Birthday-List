@@ -16,7 +16,7 @@ const Home = (props) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault()
-        const res = await axios.get(`http://localhost:3001/api/certify`, {
+        const res = await axios.get(`/api/certify`, {
             params: {
                 result: formStates
             }

@@ -31,7 +31,7 @@ const NewProject = () => {
 
     const getData = async () => {
         try {
-            const res = await axios.get(`http://localhost:3001/api/getProject/${id}`)
+            const res = await axios.get(`/api/getProject/${id}`)
             setProjects(res.data.project)
             setData(res.data.project.data)
         } catch (e) {
@@ -53,8 +53,8 @@ const NewProject = () => {
             formState.notes !== '' && 
             titleState.title !== ''
         ) {
-            const postData = await axios.post("http://localhost:3001/api/createData", formState)
-            await axios.put(`http://localhost:3001/api/updateProjects/${id}`, {
+            const postData = await axios.post("/api/createData", formState)
+            await axios.put(`/api/updateProjects/${id}`, {
                 title: titleState.title,
                 data: [...data, postData.data.data],
             })
@@ -65,7 +65,7 @@ const NewProject = () => {
 
 
 const handleDelete = async(id) => {
-    await axios.delete(`http://localhost:3001/api/deleteDatas/${id}`)
+    await axios.delete(`/api/deleteDatas/${id}`)
     getData()
 }
 

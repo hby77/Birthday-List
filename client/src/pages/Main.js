@@ -10,7 +10,7 @@ const Main = () => {
 
     const getUserProjects = async () => {
         try {
-            const res = await axios.get(`http://localhost:3001/api/getUser/${sessionStorage.getItem("userId")}`)
+            const res = await axios.get(`/api/getUser/${sessionStorage.getItem("userId")}`)
             setProjects(res.data.user.projects)
         } catch (e) {
             console.log(e)
@@ -19,10 +19,10 @@ const Main = () => {
 
     const createNewProject = async () => {
         try {
-            const projectData = await axios.post('http://localhost:3001/api/createProject', {
+            const projectData = await axios.post('/api/createProject', {
                 title: 'Create a new project'
             })
-            await axios.put(`http://localhost:3001/api/updateUsers/${sessionStorage.getItem("userId")}`,
+            await axios.put(`/api/updateUsers/${sessionStorage.getItem("userId")}`,
                 {
                     projects: [...projects, projectData.data.project],
                 }
@@ -41,7 +41,7 @@ const Main = () => {
     }
 
     const handleDelete = async (id) => {
-        await axios.delete(`http://localhost:3001/api/deleteProjects/${id}`)
+        await axios.delete(`/api/deleteProjects/${id}`)
         getUserProjects()
     }
 
