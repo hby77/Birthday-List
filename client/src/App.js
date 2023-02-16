@@ -4,7 +4,6 @@ import { Route, Routes } from 'react-router-dom'
 import Login from './pages/Login'
 import Signup from './pages/Signup'
 import Main from './pages/Main'
-import Project from './pages/Project'
 import NewProject from './pages/NewProject'
 
 function App() {
@@ -20,7 +19,6 @@ function App() {
         <Routes>
           <Route path="/" element={currentState === 'login' ? <Login onFormSwitch={toggleState} /> : <Signup onFormSwitch={toggleState} />} />
           <Route path="/main" element={<Main />} />
-          <Route path="/project/:id" element={<Project />} />
           <Route path="/newproject/:id" element={<NewProject />} />
         </Routes>
       </div>
