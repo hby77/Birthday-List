@@ -24,39 +24,42 @@ const Signup = (props) => {
         <div className="homeContainer">
             <form className="loginBox" onSubmit={handleSubmit}>
                 <h1>Sign Up</h1>
-                <label htmlFor="email">Email</label>
+                <label htmlFor="email"></label>
                 <br />
                 <input
-                    placeholder='youremail@gmail.com'
+                    className='textboxlogin'
+                    placeholder='Email'
                     id="email"
                     type="email"
                     value={formState.email}
                     onChange={handleChange}
                 />
                 <br />
-                <label htmlFor="name">Full Name</label>
+                <label htmlFor="name"></label>
                 <br />
                 <input
-                    placeholder='Full Name'
+                    className='textboxlogin'
+                    placeholder='Name'
                     id="name"
                     type="name"
                     value={formState.name}
                     onChange={handleChange}
                 />
                 <br />
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password"></label>
                 <br />
                 <input
-                    placeholder='*******'
+                    className='textboxlogin'
+                    placeholder='Password'
                     id="password"
                     type="password"
                     value={formState.password}
                     onChange={handleChange}
                 />
                 <br />
-                <button type="submit">Sign Up</button>
+                <button className='loginbutton' type="submit">Sign Up</button>
                 <br />
-                <button onClick={() => props.onFormSwitch('login')}>Already have an account? Login Here.</button>
+                <button className='loginbutton' onClick={() => props.onFormSwitch('login')}>Already have an account? Login Here.</button>
             </form>
         </div>
     )
