@@ -19,14 +19,12 @@ const NewProject = () => {
     }
 
     const projectState = {
-        title: '',
-        data: []
+        title: ''
     }
-    const [receivedData, setReceivedData] = useState([])
     const [data, setData] = useState([])
-
-    const [newData, setNewData] = useState(dataState)
-    const [newProject, setNewProject] = useState(projectState)
+    const [project, setProjects] = useState({})
+    const [formState, setFormState] = useState(dataState)
+    const [titleState, setTitleState] = useState(projectState)
 
 
 
@@ -34,6 +32,7 @@ const NewProject = () => {
     const getData = async () => {
         try {
             const res = await axios.get(`http://localhost:3001/api/getProject/${id}`)
+            setProjects(res.data.project)
             setData(res.data.project.data)
         } catch (e) {
             console.log(e)
@@ -44,21 +43,23 @@ const NewProject = () => {
     const handleSubmit = async (e) => {
         e.preventDefault()
         if (
-            newData.relationship !== '' &&
-            newData.person !== '' &&
-            newData.currentLocation !== '' &&
-            newData.association !== '' &&
-            newData.birthday !== '' &&
-            newData.companyAndCareer !== '' &&
-            newData.hobbiesAndExpertise !== '' &&
-            newData.notes !== ''
+            formState.relationship !== '' &&
+            formState.person !== '' &&
+            formState.currentLocation !== '' &&
+            formState.association !== '' &&
+            formState.birthday !== '' &&
+            formState.companyAndCareer !== '' &&
+            formState.hobbiesAndExpertise !== '' &&
+            formState.notes !== '' && 
+            titleState.title !== ''
         ) {
-            const postData = await axios.post("http://localhost:3001/api/createData", newData)
+            const postData = await axios.post("http://localhost:3001/api/createData", formState)
             await axios.put(`http://localhost:3001/api/updateProjects/${id}`, {
+                title: titleState.title,
                 data: [...data, postData.data.data],
             })
             getData()
-            setNewData(dataState)
+            setFormState(dataState)
         }
     }
 
@@ -72,78 +73,78 @@ const handleDelete = async(id) => {
 
     useEffect(() => {
         getData()
-    }, [receivedData])
+    }, [])
 
-
+console.log(project)
 
     return data && (
         <div>
             <div>
-                <h1>Ayooo</h1>
+                <h1>{project.title}</h1>
                 <Header />
                 <form onSubmit={handleSubmit}>
                     <input
                         name='title'
                         type='text'
                         placeholder='project title'
-                        value={newProject.relationship}
-                        onChange={(e) => setNewProject({ ...newProject, [e.target.name]: e.target.value })}
+                        value={titleState.relationship}
+                        onChange={(e) => setTitleState({ ...titleState, [e.target.name]: e.target.value })}
                     />
                     <input
                         name='relationship'
                         type='text'
                         placeholder='relationship'
-                        value={newData.relationship}
-                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                        value={formState.relationship}
+                        onChange={(e) => setFormState({ ...formState, [e.target.name]: e.target.value })}
                     />
                     <input
                         name='person'
                         type='text'
                         placeholder='person'
-                        value={newData.person}
-                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                        value={formState.person}
+                        onChange={(e) => setFormState({ ...formState, [e.target.name]: e.target.value })}
                     />
                     <input
                         name='currentLocation'
                         type='text'
                         placeholder='currentLocation'
-                        value={newData.currentLocation}
-                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                        value={formState.currentLocation}
+                        onChange={(e) => setFormState({ ...formState, [e.target.name]: e.target.value })}
                     />
                     <input
                         name='association'
                         type='text'
                         placeholder='association'
-                        value={newData.association}
-                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                        value={formState.association}
+                        onChange={(e) => setFormState({ ...formState, [e.target.name]: e.target.value })}
                     />
                     <input
                         name='birthday'
                         type='text'
                         placeholder='birthday'
-                        value={newData.birthday}
-                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                        value={formState.birthday}
+                        onChange={(e) => setFormState({ ...formState, [e.target.name]: e.target.value })}
                     />
                     <input
                         name='companyAndCareer'
                         type='text'
                         placeholder='companyAndCareer'
-                        value={newData.companyAndCareer}
-                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                        value={formState.companyAndCareer}
+                        onChange={(e) => setFormState({ ...formState, [e.target.name]: e.target.value })}
                     />
                     <input
                         name='hobbiesAndExpertise'
                         type='text'
                         placeholder='hobbiesAndExpertise'
-                        value={newData.hobbiesAndExpertise}
-                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                        value={formState.hobbiesAndExpertise}
+                        onChange={(e) => setFormState({ ...formState, [e.target.name]: e.target.value })}
                     />
                     <input
                         name='notes'
                         type='text'
                         placeholder='notes'
-                        value={newData.notes}
-                        onChange={(e) => setNewData({ ...newData, [e.target.name]: e.target.value })}
+                        value={formState.notes}
+                        onChange={(e) => setFormState({ ...formState, [e.target.name]: e.target.value })}
                     />
                     <button type="submit">+ Add</button>
                 </form>
