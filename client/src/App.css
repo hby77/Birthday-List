@@ -100,9 +100,9 @@ body {
 }
 
 .backgroundpage {
-  background: url('../image/orange.png');
+  background: url('../image/orange.png') repeat no-repeat;
   background-size: cover;
-  max-height: 100%;
+  min-height: 100vh;
   max-width: 100%;
 }
 
@@ -159,8 +159,6 @@ body {
 .centerdiv {
   display: flex;
   justify-content: center;
-  align-items: center;
-  align-content: center;
   overflow: scroll;
 }
 
@@ -184,6 +182,7 @@ body {
 }
 
 .projecttitles {
+  text-align: center;
   margin-top: 20px;
   font-size: 17px;
 }
@@ -228,7 +227,6 @@ body {
   background-color: rgba(255, 255, 255, .8);
 }
 
-
 .projectbuttonboxcontainer {
   display: flex;
   justify-content: space-between;
@@ -246,18 +244,21 @@ body {
 .databackground {
   background: url('../image/orange.png');
   background-size: cover;
-  height: 100%
+  min-height: 100vh;
+  max-width: 100%;
 }
 
 .rowdata {
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 p {
+  text-align: center;
   border: 2px solid black;
-  width: 165px;
-  height: 40px;
+  width: 10%;
+  height: 4vh;
   background-color: rgb(237, 145, 124);
 }
 
@@ -271,22 +272,22 @@ p {
 .projecttitlecontainer{
 display: flex;
 justify-content: center;
+align-items: center;
 margin-top: 10px;
 }
 
 .projecttitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-size: 30px;
-  width: 13vw;
-  height: 45px;
-  border: none;
-  outline: none;
-  border-radius: 30px;
+  border-radius: 20px;
   color: black;
   background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 2px 2px 4px black;
-  box-shadow: 4px 4px 5px black;
   text-shadow: 2px 1px 2.5px white; 
   margin-top: 10px;
+  padding: 8px;
 }
 
 .addbutton {

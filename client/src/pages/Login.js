@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios'
 
-
 const Home = (props) => {
 
     const navigate = useNavigate();
@@ -33,8 +32,6 @@ const Home = (props) => {
 
         navigate("/main")
     }
-
-
 
     return (
         <div className='logincontainer'>

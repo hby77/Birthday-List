@@ -7,7 +7,6 @@ const Main = () => {
     const [projects, setProjects] = useState([])
     const navigate = useNavigate()
 
-
     const getUserProjects = async () => {
         try {
             const res = await axios.get(`/api/getUser/${sessionStorage.getItem("userId")}`)
@@ -44,8 +43,6 @@ const Main = () => {
         await axios.delete(`/api/deleteProjects/${id}`)
         getUserProjects()
     }
-
-
 
     return projects && (
         <div className='backgroundpage'>

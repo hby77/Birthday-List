@@ -3,8 +3,6 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 
-
-
 const NewProject = () => {
     const { id } = useParams()
     const dataState = {
@@ -57,21 +55,44 @@ const NewProject = () => {
             getData()
             setFormState(dataState)
         }
-    }
 
+        if (titleState.title !== '') {
+            await axios.post("/api/createData", formState)
+            await axios.put(`/api/updateProjects/${id}`, {
+                title: titleState.title
+            })
+            getData()
+            setFormState(dataState)
+        }
+
+        if (
+            formState.relationship !== '' &&
+            formState.person !== '' &&
+            formState.currentLocation !== '' &&
+            formState.association !== '' &&
+            formState.birthday !== '' &&
+            formState.companyAndCareer !== '' &&
+            formState.hobbiesAndExpertise !== '' &&
+            formState.notes !== '' &&
+            titleState.title === ''
+        ) {
+            const postData = await axios.post("/api/createData", formState)
+            await axios.put(`/api/updateProjects/${id}`, {
+                data: [...data, postData.data.data]
+            })
+            getData()
+            setFormState(dataState)
+        }
+    }
 
     const handleDelete = async (id) => {
         await axios.delete(`/api/deleteDatas/${id}`)
         getData()
     }
 
-
-
     useEffect(() => {
         getData()
     }, [])
-
-    console.log(project)
 
     return data && (
         <div className='backgroundcontainer'>
