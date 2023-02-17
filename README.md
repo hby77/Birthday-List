@@ -1,10 +1,10 @@
-# Birthday-List
+# Relationship Manager
 ## Date: 02/09/2023
 ### By: Hyun Bin Yim
-#### [LinkedIn](https://www.linkedin.com/in/hyunbinyim/) | [Github](https://github.com/hby77) | [Trello]() | [Lucid](https://lucid.app/lucidchart/ed2f22e4-af5a-4aad-8695-ab3c42e49d24/edit?invitationId=inv_9a44e7f3-103b-4d9d-a645-9cd8bf9c26f4&page=0_0#)
+#### [LinkedIn](https://www.linkedin.com/in/hyunbinyim/) | [Github](https://github.com/hby77) | [Trello]() | [Lucid]https://lucid.app/lucidchart/9c24a6a8-3879-4342-9466-0a8e11c6574a/edit?page=0_0&invitationId=inv_e85ceed0-7e1c-4313-98b3-7075aa2356c4#
 ***
 ### ***Description***
-#### The website is a birthday gift planer. It helps people plan ahead and figure out what to get the birthday person for their birthday. It will have a main screen that allows for Log In and Sign Up. After you log in, you will have options to create a birthday list for the person on a event page and so will everyone else that joins the event page. 
+#### This website is a relationship maanger. The purpose of this website is to help people organize and structure their relationships with other people. There are times when it is difficult to contact and maintain high levels of relationships simply due to the lack of structure and organization. This project will help make that a convenience and give the provided structure that is needed.
 ***
 ### ***Technologies Used***
 * React
@@ -15,7 +15,7 @@
 * Express
 ***
 ### ***Getting Started***
-#### Log in and be able to plan your birthday list.
+#### Log In and have full access to your projects!
 ***
 ### ***Screenshots***
 #### Picture
@@ -28,9 +28,10 @@
 ![Image]
 ***
 ### ***Future Updatess***
-#### update 1
-#### update 2
-#### update 3
+#### Adding a feature that allows the time stamp of peroson last spoken to
+#### Adding a feature when project was last updated
+#### Adding a feature to specifically edit the data information individually by adding another schema. 
+#### Adding more css and other features to polish the website
 ***
 ### ***Credits***
 #### My classmates && Teachers && Ta's
