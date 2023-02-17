@@ -3,14 +3,14 @@ const Schema = mongoose.Schema
 
 const Data = new Schema(
     {
-        relationship: { type: String, required: true },
-        person: { type: String, required: true },
-        currentLocation: { type: String, required: true },
-        association: { type: String, required: true },
-        birthday: { type: String, required: true },
-        companyAndCareer: { type: String, required: true },
-        hobbiesAndExpertise: { type: String, required: true },
-        notes: { type: String, required: true },
+        relationship: { type: String, required: false },
+        person: { type: String, required: false },
+        currentLocation: { type: String, required: false },
+        association: { type: String, required: false },
+        birthday: { type: String, required: false },
+        companyAndCareer: { type: String, required: false },
+        hobbiesAndExpertise: { type: String, required: false },
+        notes: { type: String, required: false },
     },
     { timestamps: true },
 )

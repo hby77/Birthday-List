@@ -26,9 +26,6 @@ const NewProject = () => {
     const [formState, setFormState] = useState(dataState)
     const [titleState, setTitleState] = useState(projectState)
 
-
-
-
     const getData = async () => {
         try {
             const res = await axios.get(`/api/getProject/${id}`)
@@ -38,7 +35,6 @@ const NewProject = () => {
             console.log(e)
         }
     }
-
 
     const handleSubmit = async (e) => {
         e.preventDefault()
@@ -78,7 +74,7 @@ const handleDelete = async(id) => {
 console.log(project)
 
     return data && (
-        <div>
+        <div className='databackground'>
             <div>
                 <h1>{project.title}</h1>
                 <Header />

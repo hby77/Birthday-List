@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div className='appContainer'>
-      <div className='routeContainer'>
+      <div>
         <Routes>
           <Route path="/" element={currentState === 'login' ? <Login onFormSwitch={toggleState} /> : <Signup onFormSwitch={toggleState} />} />
           <Route path="/main" element={<Main />} />

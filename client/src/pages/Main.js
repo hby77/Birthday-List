@@ -20,7 +20,7 @@ const Main = () => {
     const createNewProject = async () => {
         try {
             const projectData = await axios.post('/api/createProject', {
-                title: 'Create a new project'
+                title: 'New Project'
             })
             await axios.put(`/api/updateUsers/${sessionStorage.getItem("userId")}`,
                 {
@@ -31,7 +31,7 @@ const Main = () => {
         } catch (e) {
         }
     }
-    
+
     useEffect(() => {
         getUserProjects()
     }, [])
@@ -48,17 +48,31 @@ const Main = () => {
 
 
     return projects && (
-        <div>
-            <Header />
-            <button onClick={createNewProject} className='createproject'>Create Project</button>
-            <div>
-                {projects.map((project) => (
-                    <div key={project._id}>
-                        <h2>{project.title}</h2>
-                        <button onClick={() => handleEdit(project._id)}>Edit</button>
-                        <button onClick={() => handleDelete(project._id)}>Delete</button>
-                    </div>
-                ))}
+        <div className='backgroundpage'>
+            <div className='navandbuttoncontainer'>
+                <div className='navbarmain'>
+                    <Header />
+                </div>
+                <div className='createprojectcontainer'>
+                    <button onClick={createNewProject} className='createproject'>Create Project</button>
+                </div>
+            </div>
+            <div className='centerdiv'>
+                <div className='allprojects'>
+                    {projects.map((project) => (
+                        <div key={project._id}>
+                            <div className='projectbuttonboxcontainer'>
+                                <div className='projecttitles'>
+                                    <h2>{project.title}</h2>
+                                </div>
+                                <div className='editdeletebuttonbox'>
+                                    <button className='editbuttonmain' onClick={() => handleEdit(project._id)}>Edit</button>
+                                    <button className='deletebuttonmain' onClick={() => handleDelete(project._id)}>Delete</button>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
         </div>
     )

@@ -37,7 +37,7 @@ const Home = (props) => {
 
 
     return (
-
+        <div className='logincontainer'>
             <div className='loginbackground'>
                 <div className="homeContainer">
                     <form className="loginBox" onSubmit={handleSubmit}>
@@ -65,10 +65,11 @@ const Home = (props) => {
                         <br />
                         <button className='submitbutton' type="submit">Sign In</button>
                         <br />
-                        <label><a href='#' className='loginlink' onClick={() => props.onFormSwitch('signup')}>Don't have an account? Signup Here.</a></label> 
+                        <label><a href='#' className='loginlink' onClick={() => props.onFormSwitch('signup')}>Don't have an account? Signup Here.</a></label>
                     </form>
                 </div>
             </div>
+        </div>
     )
 }
 export default Home

@@ -1,37 +1,21 @@
-
 body {
   margin: 0;
-  
 }
+
 .loginbackground {
   background: url('../image/backgrounddd.jpeg') no-repeat center center fixed;
   background-size: cover;
-  width: 100vw;
+  width: 100%;
+  height: 100%;
   display: flex;
   justify-content: flex-end;
 }
 
-.navBar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  background-color: blue;
-}
 
-.createproject{
-  margin-top: 5em;
-}
-/* .appContainer {
-  height: 100%;
-  width: 100%;
-} */
-
-.routeContainer {
+.logincontainer {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-
   height: 100%;
   width: 100%;
 }
@@ -58,7 +42,7 @@ body {
   background-color: rgba(239, 128, 104, 0.846);
   height: 63vh;
   width: 36vw;
-  border-radius: 10% ;
+  border-radius: 10%;
   box-shadow: 4px 4px 5px black;
   text-shadow: 2px 1px 2.5px white;
 }
@@ -71,7 +55,7 @@ body {
   border-radius: 30px;
   color: black;
   padding-left: 20px;
-  background-color: rgba(255,255,255,0.1);
+  background-color: rgba(255, 255, 255, 0.1);
   box-shadow: 2px 2px 4px black;
 }
 
@@ -83,17 +67,17 @@ body {
   outline: none;
   border-radius: 30px;
   color: black;
-  background-color: rgba(255,255,255,0.7);
+  background-color: rgba(255, 255, 255, 0.7);
   box-shadow: 2px 2px 4px black;
   cursor: pointer;
 }
 
-.submitbutton:hover{
+.submitbutton:hover {
   box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.2);
-  background-color: rgba(255,255,255,.8);
+  background-color: rgba(255, 255, 255, .8);
 }
 
-.loginname{
+.loginname {
   margin-bottom: 0;
   font-size: 36px;
 }
@@ -106,8 +90,8 @@ body {
   text-shadow: none;
 }
 
-.loginlink:hover{
-    color: whitesmoke;
+.loginlink:hover {
+  color: whitesmoke;
 }
 
 .signtext {
@@ -115,13 +99,157 @@ body {
   text-shadow: none;
 }
 
-.rowdata{
+.backgroundpage {
+  background: url('../image/orange.jpeg');
+  background-size: contain;
+  height: auto;
+
+  
+}
+
+.navandbuttoncontainer {
+  /* background-color: blue; */
+}
+
+.navBar {
   display: flex;
+  font-size: 40px;
+  justify-content: center;
+  height: 10vh;
+  width: 99.224vw;
+  background-image: url('../image/people.jpeg');
+  background-size:contain;
+  box-shadow: 4px 4px 5px black;
+  text-shadow: 2px 1px 2.5px white;
+}
+
+.createprojectcontainer {
+  background-color: blanchedalmond;
+  height: 65px;
+  box-shadow: 4px 4px 5px black;
+  text-shadow: 2px 1px 2.5px white;
+  margin-bottom: 30px;
+}
+
+.createproject {
+  font-size: 15px;
+  width: 7vw;
+  height: 45px;
+  border: none;
+  outline: none;
+  border-radius: 30px;
+  color: black;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 2px 2px 4px black;
+  cursor: pointer;
+  box-shadow: 4px 4px 5px black;
+  text-shadow: 2px 1px 2.5px white;
+  margin-left: 8px;
+  margin-top: 8px;
+}
+
+.createproject:hover {
+  box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, .8);
+}
+
+.centerdiv {
+  display: flex;
+  justify-content: center;
+}
+
+.allprojects {
+  /* background-color: green; */
+  display: flex;
+  justify-content: space-evenly;
+  flex-flow: row wrap;
+  height: 100vh;
+  width: 80vw;
+}
+
+.projectbuttonboxcontainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(237, 145, 124);
+  margin: 15px 4px 15px 4px;
+  border-radius: 20%;
+  box-shadow: 4px 4px 5px black;
+  text-shadow: 2px 1px 2.5px white;
+
+}
+
+.projecttitles {
+  /* background-color: blue; */
+}
+
+.editdeletebuttonbox {
+  /* background-color: blue; */
+}
+
+.editbuttonmain {
+  height: 40px;
+  width: 80px;
+  font-size: 17px;
+  border-radius: 15% 15% 15% 15%;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 4px 4px 5px black;
+  text-shadow: 2px 1px 2.5px white;
+  margin-bottom: 15px;
+}
+
+.editbuttonmain:hover {
+  box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, .8);
+}
+
+.deletebuttonmain {
+  height: 40px;
+  width: 80px;
+  font-size: 17px;
+  border-radius: 15% 15% 15% 15%;
+  background-color: rgba(255, 255, 255, 0.7);
+  box-shadow: 4px 4px 5px black;
+  text-shadow: 2px 1px 2.5px white;
+  margin-bottom: 15px;
+}
+
+.deletebuttonmain:hover {
+  box-shadow: 2px 2px 10px 4px rgba(0, 0, 0, 0.2);
+  background-color: rgba(255, 255, 255, .8);
+}
+
+
+.projectbuttonboxcontainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border: 2px solid black;
+  height: 200px;
+  width: 260px;
+
+  /* background-color: blue; */
+}
+
+
+
+
+
+
+.databackground{
+  /* background-color:black; */
+  height: 100%;
   width: 100%;
+}
+
+.rowdata {
+  display: flex;
+  justify-content: center;
+  background-color: green;
 }
 
 p {
   border: 2px solid black;
   width: 153px;
   height: 21px;
+  background-color: blue;
 }
