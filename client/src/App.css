@@ -107,8 +107,15 @@ body {
   
 }
 
-.navandbuttoncontainer {
-  /* background-color: blue; */
+.let{
+  margin-top: 20px;
+  color: black;
+  font-weight: 50px;
+  font-family: Impact, fantasy;
+}
+
+.let:hover {
+  background-color: rgba(255, 255, 255, .8);
 }
 
 .navBar {
@@ -120,11 +127,13 @@ body {
   background-image: url('../image/people.jpeg');
   background-size:contain;
   box-shadow: 4px 4px 5px black;
-  text-shadow: 2px 1px 2.5px white;
+  text-shadow: 2px 1px 3px white;
+  
+  
 }
 
 .createprojectcontainer {
-  background-color: blanchedalmond;
+  background-color: rgb(248, 222, 183);
   height: 65px;
   box-shadow: 4px 4px 5px black;
   text-shadow: 2px 1px 2.5px white;
@@ -159,7 +168,6 @@ body {
 }
 
 .allprojects {
-  /* background-color: green; */
   display: flex;
   justify-content: space-evenly;
   flex-flow: row wrap;
@@ -175,15 +183,17 @@ body {
   border-radius: 20%;
   box-shadow: 4px 4px 5px black;
   text-shadow: 2px 1px 2.5px white;
-
 }
 
 .projecttitles {
-  /* background-color: blue; */
+  margin-top: 20px;
+  font-size: 17px;
 }
 
 .editdeletebuttonbox {
-  /* background-color: blue; */
+  display: flex;
+  gap: 7px;
+  margin-bottom: 10px;
 }
 
 .editbuttonmain {
@@ -226,8 +236,6 @@ body {
   border: 2px solid black;
   height: 200px;
   width: 260px;
-
-  /* background-color: blue; */
 }
 
 
