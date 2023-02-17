@@ -15,17 +15,17 @@
 * Express
 ***
 ### ***Getting Started***
-#### Log In and have full access to your projects!
+#### Create an account and login. Then use the websites as you would like!
 ***
 ### ***Screenshots***
-#### Picture
-![Image]
-#### Picture 
-![Image]
-#### Picture 
-![Image]
-#### Picture
-![Image]
+#### Login Picture
+![Image](images/login.png)
+#### Signup Picture 
+![Image](images/signup.png)
+#### Create Project Picture 
+![Image](images/createproject.png)
+#### Create Data Picture
+![Image](images/createdata.png)
 ***
 ### ***Future Updatess***
 #### Adding a feature that allows the time stamp of peroson last spoken to
@@ -35,4 +35,6 @@
 ***
 ### ***Credits***
 #### My classmates && Teachers && Ta's
+#### https://www.youtube.com/watch?v=Tv7FYCPxF7g&t=222s&ab_channel=Ludiflex
+#### https://www.figma.com/files/recent?fuid=1207735453456998110
 ***
